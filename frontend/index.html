@@ -1,211 +1,190 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .container { background: white; padding: 2rem; border-radius: 12px; width: 90%; max-width: 500px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #185FA5; margin-bottom: 1.5rem; }
-        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 1rem; }
-        button { width: 100%; padding: 12px; background: #185FA5; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; }
-        button:hover { background: #0C447C; }
-       .option { width: 100%; padding: 12px; margin-bottom: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; cursor: pointer; text-align: left; color: #333; }
-        .option:hover { background: #e9ecef; }
-        .option.correct { background: #d4edda; border-color: #28a745; }
-        .option.wrong { background: #f8d7da; border-color: #dc3545; }
-        .hidden { display: none; }
-        #timer { text-align: right; font-size: 14px; color: #666; margin-bottom: 1rem; }
-        #question-count { font-size: 13px; color: #888; margin-bottom: 0.5rem; }
-        #score-screen { text-align: center; }
-        #score-screen h2 { color: #185FA5; font-size: 2rem; margin: 1rem 0; }
-        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-        th { background: #185FA5; color: white; padding: 8px; }
-        td { padding: 8px; border-bottom: 1px solid #ddd; text-align: center; }
-        tr:nth-child(even) { background: #f8f9fa; }
-    </style>
+  <title>Computer Basics Quiz</title>
+  <style>
+    body { font-family: sans-serif; max-width: 700px; margin: 40px auto; line-height: 1.5; }
+    h1 { text-align: center; }
+    .question { margin-bottom: 20px; }
+    .question h3 { margin: 0 0 8px 0; }
+    .answers label { display: block; margin: 4px 0; }
+    #send-container { text-align: center; margin-top: 20px; }
+    #scores { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
+    #scores h2 { margin-top: 0; }
+    input[type="text"] { width: 100%; padding: 8px; margin-top: 4px; }
+    button { padding: 10px 20px; font-size: 16px; }
+  </style>
 </head>
 <body>
-    <button onclick="sendScore()">Send Score</button>
-    <div id="scores"></div>
-    <script>
-function sendScore() {
-  fetch("https://quiz-app-mba6.onrender.com/submit-score", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: "Rahul",
-      score: 10
-    })
-  })
-  .then(res => res.json())
-  .then(data => alert("Score sent!"));
-}
-function loadScores() {
-  fetch("https://quiz-app-mba6.onrender.com/scores")
-    .then(res => res.json())
-    .then(data => {
-      let html = "<h3>Scores:</h3>";
-      data.forEach(s => {
-        html += `<p>${s.name}: ${s.score}</p>`;
+
+  <h1>Computer Basics Quiz</h1>
+
+  <!-- name input -->
+  <div class="question">
+    <label for="name"><strong>Your name:</strong></label>
+    <input type="text" id="name" placeholder="Enter your name" />
+  </div>
+
+  <!-- 7 QUESTIONS -->
+  <!-- Question 1 -->
+  <div class="question" id="q1">
+    <h3>1) What does CPU stand for?</h3>
+    <div class="answers">
+      <label><input type="radio" name="q1" value="Central Processing Unit" /> Central Processing Unit</label>
+      <label><input type="radio" name="q1" value="Computer Power Unit" /> Computer Power Unit</label>
+      <label><input type="radio" name="q1" value="Control Program Unit" /> Control Program Unit</label>
+    </div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question" id="q2">
+    <h3>2) Which device is primarily used for long-term data storage?</h3>
+    <div class="answers">
+      <label><input type="radio" name="q2" value="RAM" /> RAM</label>
+      <label><input type="radio" name="q2" value="Hard Drive" /> Hard Drive</label>
+      <label><input type="radio" name="q2" value="CPU" /> CPU</label>
+    </div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question" id="q3">
+    <h3>3) What is the main purpose of an operating system?</h3>
+    <div class="answers">
+      <label><input type="radio" name="q3" value="Manage hardware and software" /> Manage hardware and software</label>
+      <label><input type="radio" name="q3" value="Write documents" /> Write documents</label>
+      <label><input type="radio" name="q3" value="Display images" /> Display images</label>
+    </div>
+  </div>
+
+  <!-- Question 4 -->
+  <div class="question" id="q4">
+    <h3>4) Which of these is an example of application software?</h3>
+    <div class="answers">
+      <label><input type="radio" name="q4" value="Microsoft Word" /> Microsoft Word</label>
+      <label><input type="radio" name="q4" value="BIOS" /> BIOS</label>
+      <label><input type="radio" name="q4" value="Processor" /> Processor</label>
+    </div>
+  </div>
+
+  <!-- Question 5 -->
+  <div class="question" id="q5">
+    <h3>5) Which media is commonly used to transfer files over the Internet?</h3>
+    <div class="answers">
+      <label><input type="radio" name="q5" value="USB cable only" /> USB cable only</label>
+      <label><input type="radio" name="q5" value="Email and cloud services" /> Email and cloud services</label>
+      <label><input type="radio" name="q5" value="Monitor" /> Monitor</label>
+    </div>
+  </div>
+
+  <!-- Question 6 -->
+  <div class="question" id="q6">
+    <h3>6) Which is NOT a typical type of computer system?</h3>
+    <div class="answers">
+      <label><input type="radio" name="q6" value="Supercomputer" /> Supercomputer</label>
+      <label><input type="radio" name="q6" value="Smartphone" /> Smartphone</label>
+      <label><input type="radio" name="q6" value="Microwave" /> Microwave</label>
+    </div>
+  </div>
+
+  <!-- Question 7 -->
+  <div class="question" id="q7">
+    <h3>7) Who is known as the father of modern computers?</h3>
+    <div class="answers">
+      <label><input type="radio" name="q7" value="Charles Babbage" /> Charles Babbage</label>
+      <label><input type="radio" name="q7" value="Bill Gates" /> Bill Gates</label>
+      <label><input type="radio" name="q7" value="Steve Jobs" /> Steve Jobs</label>
+    </div>
+  </div>
+
+  <div id="send-container">
+    <button onclick="submitQuiz()">Submit Quiz</button>
+  </div>
+
+  <div id="scores">
+    <h2>Scores:</h2>
+    <div id="scores-list"></div>
+  </div>
+
+  <script>
+    // Calculate score based on correct answers
+    function calculateScore() {
+      let score = 0;
+
+      // Correct answers:
+      // q1 -> Central Processing Unit
+      // q2 -> Hard Drive
+      // q3 -> Manage hardware and software
+      // q4 -> Microsoft Word
+      // q5 -> Email and cloud services
+      // q6 -> Microwave
+      // q7 -> Charles Babbage
+
+      const ans1 = document.querySelector('input[name="q1"]:checked');
+      const ans2 = document.querySelector('input[name="q2"]:checked');
+      const ans3 = document.querySelector('input[name="q3"]:checked');
+      const ans4 = document.querySelector('input[name="q4"]:checked');
+      const ans5 = document.querySelector('input[name="q5"]:checked');
+      const ans6 = document.querySelector('input[name="q6"]:checked');
+      const ans7 = document.querySelector('input[name="q7"]:checked');
+
+      if (ans1 && ans1.value === "Central Processing Unit") score++;
+      if (ans2 && ans2.value === "Hard Drive") score++;
+      if (ans3 && ans3.value === "Manage hardware and software") score++;
+      if (ans4 && ans4.value === "Microsoft Word") score++;
+      if (ans5 && ans5.value === "Email and cloud services") score++;
+      if (ans6 && ans6.value === "Microwave") score++;
+      if (ans7 && ans7.value === "Charles Babbage") score++;
+
+      return score;
+    }
+
+    // Send to backend
+    function submitQuiz() {
+      const name = document.getElementById("name").value.trim();
+      if (!name) {
+        alert("Please enter your name.");
+        return;
+      }
+
+      const score = calculateScore();
+
+      fetch("https://quiz-app-mba6.onrender.com/submit-score", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, score })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Score sent! You scored: " + score);
+        loadScores();
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Failed to send score. Try again.");
       });
-      document.getElementById("scores").innerHTML = html;
-    });
-}
-loadScores();
-</script>
-
-<div class="container">
-
-    <!-- Welcome Screen -->
-    <div id="welcome-screen">
-        <h1>Quiz App</h1>
-        <input type="text" id="username" placeholder="Enter your name" />
-        <button onclick="startQuiz()">Start Quiz</button>
-    </div>
-
-    <!-- Question Screen -->
-    <div id="question-screen" class="hidden">
-        <div id="question-count"></div>
-        <div id="timer"></div>
-        <h2 id="question-text" style="margin-bottom:1rem;font-size:18px;"></h2>
-        <div id="options-container"></div>
-        <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question →</button>
-    </div>
-    <button onclick="sendScore()">Send Score</button>
-
-    <!-- Score Screen -->
-    <div id="score-screen" class="hidden">
-        <h1>Quiz App</h1>
-        <p>Your Score</p>
-        <h2 id="final-score"></h2>
-        <p id="score-message"></p>
-        <h3 style="margin-top:1.5rem;">🏆 Leaderboard</h3>
-        <table>
-            <tr><th>Name</th><th>Score</th></tr>
-            <tbody id="leaderboard-body"></tbody>
-        </table>
-        <button onclick="restartQuiz()" style="margin-top:1rem;">Play Again</button>
-    </div>
-
-</div>
-
-<script>
-    const questions = [
-        { q: "What does HTML stand for?", opts: ["Hyper Text Markup Language", "High Tech Machine Language", "Home Tool Markup Language", "Hyper Transfer Markup Logic"], ans: 0 },
-        { q: "Which language runs in a browser?", opts: ["Python", "Java", "JavaScript", "C++"], ans: 2 },
-        { q: "What does CSS stand for?", opts: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Syntax", "Colorful Style Sheets"], ans: 1 },
-        { q: "What tag is used for links in HTML?", opts: ["<link>", "<a>", "<href>", "<url>"], ans: 1 },
-        { q: "Which company created JavaScript?", opts: ["Google", "Microsoft", "Netscape", "Apple"], ans: 2 }
-    ];
-
-    let current = 0, score = 0, playerName = "", timerInterval;
-    let leaderboard = [];
-
-    function startQuiz() {
-        playerName = document.getElementById('username').value.trim();
-        if (!playerName) { alert('Please enter your name!'); return; }
-        current = 0; score = 0;
-        show('question-screen');
-        loadQuestion();
     }
 
-    function show(id) {
-        ['welcome-screen','question-screen','score-screen'].forEach(s => {
-            document.getElementById(s).classList.add('hidden');
+    // Load scores from backend
+    function loadScores() {
+      fetch("https://quiz-app-mba6.onrender.com/scores")
+        .then(res => res.json())
+        .then(data => {
+          let html = "";
+          data.forEach(s => {
+            html += `<p>${s.name}: ${s.score}</p>`;
+          });
+          document.getElementById("scores-list").innerHTML = html;
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById("scores-list").innerHTML = "Could not load scores.";
         });
-        document.getElementById(id).classList.remove('hidden');
     }
 
-    function loadQuestion() {
-        clearInterval(timerInterval);
-        const q = questions[current];
-        document.getElementById('question-count').textContent = `Question ${current+1} of ${questions.length}`;
-        document.getElementById('question-text').textContent = q.q;
-        document.getElementById('next-btn').classList.add('hidden');
-        const container = document.getElementById('options-container');
-        container.innerHTML = '';
-        q.opts.forEach((opt, i) => {
-            const btn = document.createElement('button');
-            btn.className = 'option';
-            btn.textContent = opt;
-            btn.onclick = () => selectAnswer(i);
-            container.appendChild(btn);
-        });
-        startTimer();
-    }
+    // Initial load
+    loadScores();
+  </script>
 
-    function startTimer() {
-        let time = 30;
-        document.getElementById('timer').textContent = `Time: ${time}s`;
-        timerInterval = setInterval(() => {
-            time--;
-            document.getElementById('timer').textContent = `Time: ${time}s`;
-            if (time <= 0) { clearInterval(timerInterval); nextQuestion(); }
-        }, 1000);
-    }
-
-    function selectAnswer(i) {
-        clearInterval(timerInterval);
-        const correct = questions[current].ans;
-        const btns = document.querySelectorAll('.option');
-        btns.forEach((btn, idx) => {
-            btn.onclick = null;
-            if (idx === correct) btn.classList.add('correct');
-            else if (idx === i) btn.classList.add('wrong');
-        });
-        if (i === correct) score++;
-        document.getElementById('next-btn').classList.remove('hidden');
-    }
-
-    function nextQuestion() {
-        current++;
-        if (current < questions.length) loadQuestion();
-        else showScore();
-    }
-
-    function showScore() {
-        show('score-screen');
-        document.getElementById('final-score').textContent = `${score}/${questions.length}`;
-        document.getElementById('score-message').textContent = score >= 3 ? 'Great job! 🎉' : 'Keep practicing! 💪';
-        leaderboard.push({ name: playerName, score });
-        leaderboard.sort((a, b) => b.score - a.score);
-        const tbody = document.getElementById('leaderboard-body');
-        tbody.innerHTML = leaderboard.map(e => `<tr><td>${e.name}</td><td>${e.score}/${questions.length}</td></tr>`).join('');
-        saveScore();
-    }
-
-    async function saveScore() {
-        try {
-            await fetch("https://quiz-app-mba6.onrender.com/submit-score") {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: playerName, score })
-            });
-        } catch(e) { console.log('Backend not connected yet'); }
-    }
-
-    function restartQuiz() { show('welcome-screen'); }
-</script>
-<script>
-function sendScore() {
-  fetch("https://quiz-app-mba6.onrender.com/submit-score", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: "Rahul",
-      score: 10
-    })
-  })
-  .then(res => res.json())
-  .then(data => alert("Score sent!"));
-}
-</script>
 </body>
 </html>
