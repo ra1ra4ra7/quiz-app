@@ -37,4 +37,17 @@ app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
+});app.use(express.json());
+
+let scores = []; // temporary storage
+
+app.post("/submit-score", (req, res) => {
+  const { name, score } = req.body;
+
+  scores.push({ name, score });
+
+  res.json({ message: "Score saved!" });
+}); 
+app.get("/scores", (req, res) => {
+  res.json(scores);
 });
