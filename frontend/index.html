@@ -101,7 +101,9 @@
     <button onclick="submitQuiz()">Submit Quiz</button>
   </div>
 
-  <div id="scores">
+  <div id="scores">git add .
+git commit -m "add 7 computer-based questions"
+git push
     <h2>Scores:</h2>
     <div id="scores-list"></div>
   </div>
@@ -149,7 +151,7 @@
 
       const score = calculateScore();
 
-      fetch("https://quiz-app-mba6.onrender.com/submit-score", {
+      fetch("https://quiz-app-mba6.onrender.com/api/scores", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, score })
