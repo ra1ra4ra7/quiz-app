@@ -29,6 +29,7 @@
 </head>
 <body>
     <button onclick="sendScore()">Send Score</button>
+    <div id="scores"></div>
     <script>
 function sendScore() {
   fetch("https://quiz-app-mba6.onrender.com/submit-score", {
@@ -44,6 +45,18 @@ function sendScore() {
   .then(res => res.json())
   .then(data => alert("Score sent!"));
 }
+function loadScores() {
+  fetch("https://quiz-app-mba6.onrender.com/scores")
+    .then(res => res.json())
+    .then(data => {
+      let html = "<h3>Scores:</h3>";
+      data.forEach(s => {
+        html += `<p>${s.name}: ${s.score}</p>`;
+      });
+      document.getElementById("scores").innerHTML = html;
+    });
+}
+loadScores();
 </script>
 
 <div class="container">
@@ -168,7 +181,7 @@ function sendScore() {
 
     async function saveScore() {
         try {
-            await fetch('http://localhost:5000/api/scores', {
+            await fetch("https://quiz-app-mba6.onrender.com/submit-score") {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: playerName, score })
