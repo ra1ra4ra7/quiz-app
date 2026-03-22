@@ -4,7 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const Score = require("./models/score");
+const Score = require("./models/Score");
 
 const app = express();
 
