@@ -28,6 +28,24 @@
     </style>
 </head>
 <body>
+    <button onclick="sendScore()">Send Score</button>
+    <script>
+function sendScore() {
+  fetch("https://quiz-app-mba6.onrender.com/submit-score", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: "Rahul",
+      score: 10
+    })
+  })
+  .then(res => res.json())
+  .then(data => alert("Score sent!"));
+}
+</script>
+
 <div class="container">
 
     <!-- Welcome Screen -->
@@ -45,6 +63,7 @@
         <div id="options-container"></div>
         <button id="next-btn" class="hidden" onclick="nextQuestion()">Next Question →</button>
     </div>
+    <button onclick="sendScore()">Send Score</button>
 
     <!-- Score Screen -->
     <div id="score-screen" class="hidden">
@@ -158,6 +177,22 @@
     }
 
     function restartQuiz() { show('welcome-screen'); }
+</script>
+<script>
+function sendScore() {
+  fetch("https://quiz-app-mba6.onrender.com/submit-score", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: "Rahul",
+      score: 10
+    })
+  })
+  .then(res => res.json())
+  .then(data => alert("Score sent!"));
+}
 </script>
 </body>
 </html>
