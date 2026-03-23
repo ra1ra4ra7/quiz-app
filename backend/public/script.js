@@ -21,7 +21,7 @@ const quizData = [
   },
   {
     question: "Which company developed Node.js?",
-    options: ["Google", "Microsoft", "Joyent", "Facebook"],
+    options: ["Google", "Microsoft", "Joyent", "Amazon"],
     correct: "Joyent"
   }
 ];
