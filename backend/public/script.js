@@ -11,7 +11,7 @@ const quizData = [
   },
   {
     question: "What does HTML stand for?",
-    options: ["Hyper Trainer Marking Language", "Hyper Text Markup Language", "Hyper Text Marketing Language", "Hyper Tool Markup Language"],
+    options: ["Hyper Tool Marking Language", "Hyper Text Markup Language", "Hyper Text Marketing Language", "Hyper Tool Markup Language"],
     correct: "Hyper Text Markup Language"
   },
   {
