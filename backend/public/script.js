@@ -31,12 +31,10 @@ const quizDiv = document.getElementById("quiz");
 function loadQuiz() {
     quizDiv.innerHTML = "";
 
-    quizData.forEach((q, index) => {
-        let questionHTML = `
-            <div>
-                <h3>${q.question}</h3>
-        `;
-
+    let questionHTML = `
+    <div class="question">
+        <h3>${q.question}</h3>
+`;
         q.options.forEach(option => {
             questionHTML += `
                 <label>
